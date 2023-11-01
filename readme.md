@@ -1,1 +1,1 @@
-video complted ad 44.00
+video complted ad 02.20
