@@ -3,17 +3,23 @@ import { useState , useCallback , useEffect,useRef} from 'react'
 import './App.css'
 
 function App() {
-  const [length, setlength] = useState(7)
+  const [length, setlength] = useState(0)
   const [numberok,setnumberok]=useState(false)
   const [symbolok,setsymbolok]=useState(false)
   const [password,setpassword]=useState("")
   const [myname, setmyname]=useState("")
   const passref=useRef(null)
 
+
+  //to copy in clipboard
   const passcopy= useCallback(()=>{
     passref.current?.select();
 window.navigator.clipboard.writeText(password)
   },[password])
+
+
+
+
   const passgen= useCallback(()=>{
     let pass=""
     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -24,14 +30,19 @@ window.navigator.clipboard.writeText(password)
     if(symbolok){
       str +="!@#$%^&*()" 
     }
+    pass+=myname;
 
-    for (let i=1;i<=length;i++){
+    const remainingLength = length - myname.length;
+
+    for (let i=1;i<=remainingLength;i++){
 let char =Math.floor(Math.random() * str.length + 1)
     
 pass+=str.charAt(char);
 
 }
-pass+=myname;
+
+
+
    
 setpassword(pass)
   },[length,numberok,symbolok,myname,setpassword])
