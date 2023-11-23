@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useId} from 'react'
 
 function Inputbx({
     label,
@@ -14,15 +14,15 @@ function Inputbx({
     className = "",
 }) {
    
-
+const amountinputID =useId()
     return (
         <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
             <div className="w-1/2">
-                <label  className="text-black/40 mb-2 inline-block">
+                <label htmlFor={amountinputID} className="text-black/40 mb-2 inline-block">
                    { label}
                 </label>
                 <input
-                    
+                    id={amountinputID}
                     className="outline-none w-full bg-transparent py-1.5"
                     type="number"
                     placeholder="Amount"
@@ -39,7 +39,7 @@ function Inputbx({
                     onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
                     disabled={currencyDisable}
 
-                >
+                >0
                     {currencyOption.map((Currency)=>(
                           <option key={Currency} value={Currency}>
                           {Currency}
