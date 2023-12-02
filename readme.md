@@ -1,1 +1,1 @@
-video complted ad 6.15 but practical pending form 5;50
+video complted ad 6.45 
